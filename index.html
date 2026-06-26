@@ -16,54 +16,6 @@
   </div>
 
   <main>
-    <section id="mission1" class="screen">
-  <div class="mission-page">
-    <h1>🦠 Mission 1: Bacterial Base</h1>
-
-    <p class="mission-brief">
-      You have entered a prokaryotic cell. Identify the survival structures of bacteria
-      and unlock the Bacteria Investigator badge.
-    </p>
-
-    <div class="cyto-box">
-      <h3>🧫 Dr. Cyto says:</h3>
-      <p>
-        “Explorer, this cell has no true nucleus and no membrane-bounded organelles.
-        Its DNA lies freely in the cytoplasm. Scan each structure to understand how it survives.”
-      </p>
-    </div>
-
-    <div class="bacteria-zone">
-      <button onclick="scanBacteria(0)">🧬 Chromosomal DNA</button>
-      <button onclick="scanBacteria(1)">🧫 Plasmid</button>
-      <button onclick="scanBacteria(2)">🧱 Cell Wall</button>
-      <button onclick="scanBacteria(3)">🛡 Capsule</button>
-      <button onclick="scanBacteria(4)">🧵 Fimbriae</button>
-      <button onclick="scanBacteria(5)">🔗 Pilus</button>
-      <button onclick="scanBacteria(6)">🌀 Flagellum</button>
-      <button onclick="scanBacteria(7)">⚡ Mesosome</button>
-    </div>
-
-    <div class="info-panel">
-      <h2 id="bacteriaTitle">Structure Scanner</h2>
-      <p id="bacteriaInfo">Click a structure to reveal its function.</p>
-    </div>
-
-    <div class="theory-status">
-      <span id="bacteria0">⚫</span>
-      <span id="bacteria1">⚫</span>
-      <span id="bacteria2">⚫</span>
-      <span id="bacteria3">⚫</span>
-      <span id="bacteria4">⚫</span>
-      <span id="bacteria5">⚫</span>
-      <span id="bacteria6">⚫</span>
-      <span id="bacteria7">⚫</span>
-    </div>
-
-    <button onclick="completeMission1()" class="complete-btn">✅ Complete Mission 1</button>
-    <button onclick="showScreen('dashboard')" class="back-btn">⬅ Back to Mission Control</button>
-  </div>
-</section>
     <section id="home" class="screen active">
       <div class="card hero-card">
         <div class="dna">🧬</div>
@@ -103,7 +55,12 @@
         <div class="progress-box">
           <p>Cell Restoration Progress</p>
           <div class="progress-dots">
-            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span id="dot0"></span>
+            <span id="dot1"></span>
+            <span id="dot2"></span>
+            <span id="dot3"></span>
+            <span id="dot4"></span>
+            <span id="dot5"></span>
           </div>
         </div>
 
@@ -111,13 +68,13 @@
           <div class="mission-card">
             <h3>🔬 Reduction Chamber</h3>
             <p>Cell theory and introduction</p>
-            <button onclick="openMission0()">Start</button>
+            <a href="missions/mission0.html" class="mission-btn">Start</a>
           </div>
 
           <div class="mission-card">
             <h3>🦠 Bacterial Base</h3>
             <p>Prokaryotic cell structures</p>
-            <button onclick="openMission1()">Start</button>
+            <a href="missions/mission1.html" class="mission-btn">Start</a>
           </div>
 
           <div class="mission-card">
@@ -147,43 +104,7 @@
       </div>
     </section>
   </main>
-<section id="mission0" class="screen">
-  <div class="mission-page">
-    <h1>🔬 Mission 0: Reduction Chamber</h1>
-    <p class="mission-brief">
-      Before entering the CellVerse, every Explorer must understand one important question:
-      <strong>What is a cell?</strong>
-    </p>
 
-    <div class="cyto-box">
-      <h3>🧫 Dr. Cyto says:</h3>
-      <p>
-        “A cell is the basic unit of living things. Your mission is to unlock the three core ideas
-        that explain why cells are so important.”
-      </p>
-    </div>
-
-    <div class="challenge-card">
-      <h2>Cell Theory Unlock Challenge</h2>
-      <p>Click each principle to activate it.</p>
-
-      <button onclick="unlockTheory(0)">1️⃣ All living organisms are made of cells</button>
-      <button onclick="unlockTheory(1)">2️⃣ The cell is the basic unit of life</button>
-      <button onclick="unlockTheory(2)">3️⃣ New cells arise from pre-existing cells</button>
-    </div>
-
-    <div class="theory-status">
-      <span id="theory0">⚫</span>
-      <span id="theory1">⚫</span>
-      <span id="theory2">⚫</span>
-    </div>
-
-    <p id="mission0Feedback"></p>
-
-    <button onclick="completeMission0()" class="complete-btn">✅ Complete Mission 0</button>
-    <button onclick="showScreen('dashboard')" class="back-btn">⬅ Back to Mission Control</button>
-  </div>
-</section>
   <script src="script.js"></script>
 </body>
 </html>
