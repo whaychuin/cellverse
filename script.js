@@ -2,21 +2,34 @@ function showScreen(screenId) {
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
   });
-
   document.getElementById(screenId).classList.add("active");
 }
+
+window.onload = function () {
+  const hasStarted = localStorage.getItem("cellverseStarted") === "true";
+
+  if (window.location.hash === "#dashboard" && hasStarted) {
+    openDashboard();
+  } else if (hasStarted) {
+    document.querySelector(".hero-card button").innerText = "🚀 CONTINUE CELLVERSE";
+  }
+
+  updateProgressDots();
+};
 
 function startShrink() {
   const name = document.getElementById("studentName").value.trim();
   const studentClass = document.getElementById("studentClass").value.trim();
 
-  if (name === "") {
+  if (name === "" && localStorage.getItem("cellverseName") === null) {
     alert("Please enter your Explorer Name.");
     return;
   }
 
-  localStorage.setItem("cellverseName", name);
-  localStorage.setItem("cellverseClass", studentClass);
+  if (name !== "") localStorage.setItem("cellverseName", name);
+  if (studentClass !== "") localStorage.setItem("cellverseClass", studentClass);
+
+  localStorage.setItem("cellverseStarted", "true");
 
   showScreen("shrink");
 
@@ -55,7 +68,7 @@ function openDashboard() {
   const studentClass = localStorage.getItem("cellverseClass") || "";
 
   document.getElementById("welcomeText").innerText =
-    "Welcome, Explorer " + name + (studentClass ? " from " + studentClass : "") + ". Your mission begins now.";
+    "Welcome back, Explorer " + name + (studentClass ? " from " + studentClass : "") + ". Continue your mission.";
 
   updateProgressDots();
   showScreen("dashboard");
