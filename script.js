@@ -1,96 +1,66 @@
-let studentName = "";
-let score = 0;
-let currentQuestion = 0;
+function showScreen(screenId) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
 
-const questions = [
-  {
-    mission: "Mission 1: Cell Detective",
-    question: "Which cell has no true nucleus?",
-    answers: ["Animal cell", "Plant cell", "Prokaryotic cell", "Fungal cell"],
-    correct: "Prokaryotic cell"
-  },
-  {
-    mission: "Mission 2: Plant vs Animal Cell",
-    question: "Which structure is found in plant cells but not animal cells?",
-    answers: ["Mitochondrion", "Cell wall", "Ribosome", "Cell membrane"],
-    correct: "Cell wall"
-  },
-  {
-    mission: "Mission 3: Organelle Mission",
-    question: "Which organelle is responsible for ATP production?",
-    answers: ["Nucleus", "Golgi apparatus", "Mitochondrion", "Ribosome"],
-    correct: "Mitochondrion"
-  },
-  {
-    mission: "Mission 4: Fluid Mosaic Model",
-    question: "Which molecule can pass directly through the phospholipid bilayer most easily?",
-    answers: ["Glucose", "Protein", "Oxygen", "Sodium ion"],
-    correct: "Oxygen"
-  }
-];
+  document.getElementById(screenId).classList.add("active");
+}
 
-function startMission() {
-  studentName = document.getElementById("studentName").value;
+function startShrink() {
+  const name = document.getElementById("studentName").value.trim();
+  const studentClass = document.getElementById("studentClass").value.trim();
 
-  if (studentName.trim() === "") {
-    alert("Please enter your name.");
+  if (name === "") {
+    alert("Please enter your Explorer Name.");
     return;
   }
 
-  document.querySelector(".hero").classList.add("hidden");
-  document.getElementById("missionArea").classList.remove("hidden");
+  localStorage.setItem("cellverseName", name);
+  localStorage.setItem("cellverseClass", studentClass);
 
-  showQuestion();
+  showScreen("shrink");
+
+  const shrinkSteps = [
+    "Initializing scan...",
+    "DNA detected...",
+    "Living organism confirmed...",
+    "Activating Microscopic Reduction Chamber...",
+    "Reducing size: 100 cm",
+    "Reducing size: 10 cm",
+    "Reducing size: 1 cm",
+    "Reducing size: 1 mm",
+    "Reducing size: 100 μm",
+    "Reducing size: 20 μm",
+    "Final size reached: 5 μm",
+    "Entering CellVerse..."
+  ];
+
+  let step = 0;
+  const text = document.getElementById("shrinkText");
+  const fill = document.getElementById("loadingFill");
+
+  const interval = setInterval(() => {
+    text.innerText = shrinkSteps[step];
+    fill.style.width = ((step + 1) / shrinkSteps.length) * 100 + "%";
+
+    step++;
+
+    if (step >= shrinkSteps.length) {
+      clearInterval(interval);
+
+      setTimeout(() => {
+        openDashboard();
+      }, 800);
+    }
+  }, 650);
 }
 
-function showQuestion() {
-  const q = questions[currentQuestion];
+function openDashboard() {
+  const name = localStorage.getItem("cellverseName") || "Explorer";
+  const studentClass = localStorage.getItem("cellverseClass") || "";
 
-  document.getElementById("missionTitle").innerText = q.mission;
-  document.getElementById("questionText").innerText = q.question;
-  document.getElementById("feedback").innerText = "";
+  document.getElementById("welcomeText").innerText =
+    "Welcome, Explorer " + name + (studentClass ? " from " + studentClass : "") + ". Your mission begins now.";
 
-  const answerDiv = document.getElementById("answerButtons");
-  answerDiv.innerHTML = "";
-
-  q.answers.forEach(answer => {
-    const btn = document.createElement("button");
-    btn.innerText = answer;
-    btn.className = "answer-btn";
-    btn.onclick = function() {
-      checkAnswer(answer);
-    };
-    answerDiv.appendChild(btn);
-  });
-}
-
-function checkAnswer(answer) {
-  const q = questions[currentQuestion];
-
-  if (answer === q.correct) {
-    score += 10;
-    document.getElementById("feedback").innerText = "✅ Correct! Excellent, Cell Scientist!";
-  } else {
-    document.getElementById("feedback").innerText = "❌ Not quite. Correct answer: " + q.correct;
-  }
-
-  document.getElementById("score").innerText = score;
-}
-
-function nextQuestion() {
-  currentQuestion++;
-
-  if (currentQuestion < questions.length) {
-    showQuestion();
-  } else {
-    endMission();
-  }
-}
-
-function endMission() {
-  document.getElementById("missionArea").classList.add("hidden");
-  document.getElementById("finalArea").classList.remove("hidden");
-
-  document.getElementById("finalMessage").innerText =
-    studentName + ", your final score is " + score + " / 40.";
+  showScreen("dashboard");
 }
