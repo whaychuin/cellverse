@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CellVerse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section class="hero">
+    <h1>🧬 CellVerse</h1>
+    <h2>Explore the World Within</h2>
+    <p>
+      Welcome, Cell Scientists! Complete four missions to save the damaged cell.
+    </p>
+
+    <input type="text" id="studentName" placeholder="Enter your name">
+    <button onclick="startMission()">Start Mission</button>
+  </section>
+
+  <section id="missionArea" class="hidden">
+    <h2 id="missionTitle"></h2>
+    <p id="questionText"></p>
+
+    <div id="answerButtons"></div>
+
+    <p id="feedback"></p>
+    <button onclick="nextQuestion()">Next</button>
+
+    <p>Score: <span id="score">0</span></p>
+  </section>
+
+  <section id="finalArea" class="hidden">
+    <h2>🏆 Mission Complete!</h2>
+    <p id="finalMessage"></p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
