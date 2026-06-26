@@ -246,3 +246,31 @@ button:hover {
   background: rgba(255, 255, 255, 0.25);
   color: white;
 }
+.bacteria-zone {
+  max-width: 850px;
+  margin: 25px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.bacteria-zone button {
+  min-height: 75px;
+  background: rgba(0, 229, 255, 0.18);
+  color: white;
+  border: 1px solid rgba(0, 229, 255, 0.5);
+}
+
+.info-panel {
+  max-width: 760px;
+  margin: 25px auto;
+  padding: 22px;
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 18px;
+  border-left: 5px solid #00e5ff;
+  text-align: left;
+}
+
+.info-panel h2 {
+  color: #66ff99;
+}
