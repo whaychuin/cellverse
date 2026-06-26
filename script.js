@@ -98,3 +98,6 @@ function completeMission0() {
 
   showScreen("dashboard");
 }
+function openMission0() {
+  showScreen("mission0");
+}
