@@ -64,3 +64,37 @@ function openDashboard() {
 
   showScreen("dashboard");
 }
+let theoryUnlocked = [false, false, false];
+
+function openMission0() {
+  showScreen("mission0");
+}
+
+function unlockTheory(index) {
+  theoryUnlocked[index] = true;
+  document.getElementById("theory" + index).innerText = "🟢";
+
+  const messages = [
+    "Principle 1 unlocked: Living organisms are made of cells.",
+    "Principle 2 unlocked: The cell is the basic unit of life.",
+    "Principle 3 unlocked: New cells arise from pre-existing cells."
+  ];
+
+  document.getElementById("mission0Feedback").innerText = messages[index];
+}
+
+function completeMission0() {
+  const completed = theoryUnlocked.every(item => item === true);
+
+  if (!completed) {
+    alert("Please unlock all three Cell Theory principles first.");
+    return;
+  }
+
+  alert("Mission 0 completed! Reduction Chamber activated.");
+
+  const dots = document.querySelectorAll(".progress-dots span");
+  dots[0].style.background = "#66ff99";
+
+  showScreen("dashboard");
+}
