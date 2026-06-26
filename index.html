@@ -1,39 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CellVerse</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <div class="bg">
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+  </div>
 
-  <section class="hero">
-    <h1>🧬 CellVerse</h1>
-    <h2>Explore the World Within</h2>
-    <p>
-      Welcome, Cell Scientists! Complete four missions to save the damaged cell.
-    </p>
+  <main>
+    <section id="home" class="screen active">
+      <div class="card hero-card">
+        <div class="dna">🧬</div>
+        <h1>CellVerse</h1>
+        <h2>Explore the World Within</h2>
+        <p class="tagline">Every cell has a story.</p>
 
-    <input type="text" id="studentName" placeholder="Enter your name">
-    <button onclick="startMission()">Start Mission</button>
-  </section>
+        <div class="story-box">
+          <p><strong>Year 2086.</strong></p>
+          <p>The CellVerse Research Centre has detected a damaged living cell.</p>
+          <p>Organelles are failing. The plasma membrane is unstable.</p>
+          <p>Your mission: shrink, enter the cell, and restore life.</p>
+        </div>
 
-  <section id="missionArea" class="hidden">
-    <h2 id="missionTitle"></h2>
-    <p id="questionText"></p>
+        <input id="studentName" type="text" placeholder="Enter Explorer Name" />
+        <input id="studentClass" type="text" placeholder="Enter Class / Practicum" />
 
-    <div id="answerButtons"></div>
+        <button onclick="startShrink()">🚀 ENTER CELLVERSE</button>
+      </div>
+    </section>
 
-    <p id="feedback"></p>
-    <button onclick="nextQuestion()">Next</button>
+    <section id="shrink" class="screen">
+      <div class="card">
+        <h2>🔬 Microscopic Reduction Chamber</h2>
+        <p id="shrinkText">Initializing scan...</p>
+        <div class="loading-bar">
+          <div id="loadingFill"></div>
+        </div>
+      </div>
+    </section>
 
-    <p>Score: <span id="score">0</span></p>
-  </section>
+    <section id="dashboard" class="screen">
+      <div class="dashboard">
+        <h1>🌍 Mission Control</h1>
+        <p id="welcomeText"></p>
 
-  <section id="finalArea" class="hidden">
-    <h2>🏆 Mission Complete!</h2>
-    <p id="finalMessage"></p>
-  </section>
+        <div class="progress-box">
+          <p>Cell Restoration Progress</p>
+          <div class="progress-dots">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="mission-grid">
+          <div class="mission-card">
+            <h3>🔬 Reduction Chamber</h3>
+            <p>Cell theory and introduction</p>
+            <button>Start</button>
+          </div>
+
+          <div class="mission-card">
+            <h3>🦠 Bacterial Base</h3>
+            <p>Prokaryotic cell structures</p>
+            <button>Locked</button>
+          </div>
+
+          <div class="mission-card">
+            <h3>🏙 Animal Cell City</h3>
+            <p>Animal cell and organelles</p>
+            <button>Locked</button>
+          </div>
+
+          <div class="mission-card">
+            <h3>🌿 Plant Kingdom</h3>
+            <p>Plant cell special structures</p>
+            <button>Locked</button>
+          </div>
+
+          <div class="mission-card">
+            <h3>⚙ Organelle Factory</h3>
+            <p>Organelles and endomembrane system</p>
+            <button>Locked</button>
+          </div>
+
+          <div class="mission-card">
+            <h3>🌊 Membrane Defence</h3>
+            <p>Fluid Mosaic Model</p>
+            <button>Locked</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
