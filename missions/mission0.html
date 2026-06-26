@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission 0 - Reduction Chamber</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <div class="bg">
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+  </div>
+
+  <main>
+    <section class="screen active">
+      <div class="mission-page">
+        <h1>🔬 Mission 0: Reduction Chamber</h1>
+
+        <p class="mission-brief">
+          Before entering the CellVerse, every Explorer must understand one important question:
+          <strong>What is a cell?</strong>
+        </p>
+
+        <div class="cyto-box">
+          <h3>🧫 Dr. Cyto says:</h3>
+          <p>
+            “A cell is the basic unit of living things. Your mission is to unlock the three core ideas
+            that explain why cells are so important.”
+          </p>
+        </div>
+
+        <div class="challenge-card">
+          <h2>Cell Theory Unlock Challenge</h2>
+          <p>Click each principle to activate it.</p>
+
+          <button onclick="unlockTheory(0)">1️⃣ All living organisms are made of cells</button>
+          <button onclick="unlockTheory(1)">2️⃣ The cell is the basic unit of life</button>
+          <button onclick="unlockTheory(2)">3️⃣ New cells arise from pre-existing cells</button>
+        </div>
+
+        <div class="theory-status">
+          <span id="theory0">⚫</span>
+          <span id="theory1">⚫</span>
+          <span id="theory2">⚫</span>
+        </div>
+
+        <p id="mission0Feedback"></p>
+
+        <button onclick="completeMission0()" class="complete-btn">✅ Complete Mission 0</button>
+        <a href="../index.html" class="mission-btn">⬅ Back to Mission Control</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    let theoryUnlocked = [false, false, false];
+
+    function unlockTheory(index) {
+      theoryUnlocked[index] = true;
+      document.getElementById("theory" + index).innerText = "🟢";
+
+      const messages = [
+        "Principle 1 unlocked: Living organisms are made of cells.",
+        "Principle 2 unlocked: The cell is the basic unit of life.",
+        "Principle 3 unlocked: New cells arise from pre-existing cells."
+      ];
+
+      document.getElementById("mission0Feedback").innerText = messages[index];
+    }
+
+    function completeMission0() {
+      const completed = theoryUnlocked.every(item => item === true);
+
+      if (!completed) {
+        alert("Please unlock all three Cell Theory principles first.");
+        return;
+      }
+
+      localStorage.setItem("mission0Complete", "true");
+      alert("Mission 0 completed! Reduction Chamber activated.");
+      window.location.href = "../index.html";
+    }
+  </script>
+</body>
+</html>
