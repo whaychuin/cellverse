@@ -63,7 +63,7 @@
           <div class="mission-card">
             <h3>🔬 Reduction Chamber</h3>
             <p>Cell theory and introduction</p>
-            <button>Start</button>
+            <button onclick="openMission0()">Start</button>
           </div>
 
           <div class="mission-card">
@@ -99,7 +99,43 @@
       </div>
     </section>
   </main>
+<section id="mission0" class="screen">
+  <div class="mission-page">
+    <h1>🔬 Mission 0: Reduction Chamber</h1>
+    <p class="mission-brief">
+      Before entering the CellVerse, every Explorer must understand one important question:
+      <strong>What is a cell?</strong>
+    </p>
 
+    <div class="cyto-box">
+      <h3>🧫 Dr. Cyto says:</h3>
+      <p>
+        “A cell is the basic unit of living things. Your mission is to unlock the three core ideas
+        that explain why cells are so important.”
+      </p>
+    </div>
+
+    <div class="challenge-card">
+      <h2>Cell Theory Unlock Challenge</h2>
+      <p>Click each principle to activate it.</p>
+
+      <button onclick="unlockTheory(0)">1️⃣ All living organisms are made of cells</button>
+      <button onclick="unlockTheory(1)">2️⃣ The cell is the basic unit of life</button>
+      <button onclick="unlockTheory(2)">3️⃣ New cells arise from pre-existing cells</button>
+    </div>
+
+    <div class="theory-status">
+      <span id="theory0">⚫</span>
+      <span id="theory1">⚫</span>
+      <span id="theory2">⚫</span>
+    </div>
+
+    <p id="mission0Feedback"></p>
+
+    <button onclick="completeMission0()" class="complete-btn">✅ Complete Mission 0</button>
+    <button onclick="showScreen('dashboard')" class="back-btn">⬅ Back to Mission Control</button>
+  </div>
+</section>
   <script src="script.js"></script>
 </body>
 </html>
