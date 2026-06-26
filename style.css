@@ -1,52 +1,193 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  font-family: Arial, sans-serif;
   color: white;
+  background: radial-gradient(circle at top, #123c69, #06142e 70%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: rgba(0, 229, 255, 0.18);
+  border: 2px solid rgba(0, 229, 255, 0.35);
+  border-radius: 50%;
+  animation: float 12s infinite ease-in-out;
+}
+
+.p1 { top: 10%; left: 10%; }
+.p2 { top: 65%; left: 15%; animation-delay: 2s; }
+.p3 { top: 20%; right: 12%; animation-delay: 4s; }
+.p4 { bottom: 8%; right: 20%; animation-delay: 6s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-35px) scale(1.15); }
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  padding: 40px 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen.active {
+  display: flex;
+}
+
+.card {
+  width: min(900px, 95%);
+  padding: 35px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(0, 229, 255, 0.18);
   text-align: center;
 }
 
-.hero, #missionArea, #finalArea {
-  max-width: 700px;
-  margin: 60px auto;
-  padding: 30px;
-  background: rgba(255,255,255,0.12);
-  border-radius: 20px;
+.hero-card h1 {
+  font-size: 64px;
+  margin: 10px 0;
 }
 
-h1 {
-  font-size: 48px;
+.hero-card h2 {
+  font-size: 28px;
+  margin: 5px 0;
+}
+
+.dna {
+  font-size: 45px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px #00e5ff); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 20px #00e5ff); }
+}
+
+.tagline {
+  color: #66ff99;
+  font-weight: bold;
+}
+
+.story-box {
+  max-width: 700px;
+  margin: 25px auto;
+  padding: 18px;
+  border-left: 4px solid #00e5ff;
+  background: rgba(0, 0, 0, 0.22);
+  text-align: left;
+  border-radius: 12px;
 }
 
 input {
-  padding: 12px;
-  border-radius: 8px;
+  display: block;
+  width: min(600px, 95%);
+  margin: 12px auto;
+  padding: 15px;
+  border-radius: 14px;
   border: none;
-  width: 70%;
-  margin: 15px;
+  font-size: 16px;
 }
 
 button {
-  padding: 12px 20px;
-  margin: 8px;
+  margin-top: 15px;
+  padding: 15px 28px;
   border: none;
-  border-radius: 10px;
-  cursor: pointer;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #00e5ff, #66ff99);
   font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.5);
 }
 
 button:hover {
   transform: scale(1.05);
 }
 
-.hidden {
-  display: none;
+.loading-bar {
+  width: min(600px, 90%);
+  height: 25px;
+  border-radius: 20px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
 }
 
-.answer-btn {
-  display: block;
-  width: 80%;
-  margin: 10px auto;
-  background: white;
-  color: #1e3a8a;
+#loadingFill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00e5ff, #66ff99);
+  transition: width 0.5s;
+}
+
+.dashboard {
+  width: min(1100px, 96%);
+  text-align: center;
+}
+
+.progress-box {
+  margin: 20px auto 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+}
+
+.progress-dots span {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin: 6px;
+  border-radius: 50%;
+  background: #222;
+  border: 2px solid #00e5ff;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.mission-card {
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.12);
+  transition: 0.3s;
+}
+
+.mission-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 28px rgba(102, 255, 153, 0.35);
+}
+
+.mission-card p {
+  color: #dbeafe;
+}
+
+@media (max-width: 600px) {
+  .hero-card h1 {
+    font-size: 42px;
+  }
+
+  .card {
+    padding: 24px;
+  }
 }
